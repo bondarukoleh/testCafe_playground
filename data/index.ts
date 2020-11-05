@@ -1,0 +1,1 @@
+export const testCafeExampleURL = `https://devexpress.github.io/testcafe/example/`;
