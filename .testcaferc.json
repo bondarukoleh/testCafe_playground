@@ -1,0 +1,4 @@
+{
+  "browsers": ["chrome"],
+  "src": ["./specs/ui.elements.spec.ts"]
+}
