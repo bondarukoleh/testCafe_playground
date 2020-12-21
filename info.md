@@ -22,15 +22,6 @@ proxied thru proxy to browser, I haven't got the feature of it yet. TestCafe als
 to conceal automation scripts from the rest of the page code. The proxying mechanism ensures that the page appears
 to be hosted at the original URL even to the test code.
 
-## Test Execution
-TestCafe can detect browsers on your local machine.
-Supports browsers like Chrome (& mobile), IE 11, Edge, Firefox, Safari (& mobile).
-```shell
-$ testcafe --list-browsers; #firefox chrome ie edge opera edge-legacy
-$ testcafe chrome ./specs/ui.elements.spec.ts # to run your spec in chrome
-$ testcafe all ./specs/ui.elements.spec.ts # to run your spec in chrome
-```
-
 ### Config
 `.testcaferc.json` file in root dir.
 Command line settings override values from the configuration file in case they differ
@@ -59,7 +50,7 @@ Command line settings override values from the configuration file in case they d
     "fixtureGrep": "Page.*"
     "testMeta": {
       "device": "mobile",
-        "env": "production"
+      "env": "production"
     }
     "fixtureMeta": {
       "device": "mobile",
@@ -86,8 +77,57 @@ Command line settings override values from the configuration file in case they d
     "disablePageCaching": true /* Prevents the browser from caching page content. */
   }
 }
-
+```
+## Test Execution
+TestCafe can detect browsers on your local machine.
+Supports browsers like Chrome (& mobile), IE 11, Edge, Firefox, Safari (& mobile).
+```shell
+$ testcafe --list-browsers; #firefox chrome ie edge opera edge-legacy
+$ testcafe chrome ./specs/ui.elements.spec.ts # to run your spec in chrome
+$ testcafe all ./specs/ui.elements.spec.ts # to run your spec in chrome
 ```
 
+You can run tests in live mode, so when you change them - they will rerun. Watch mode name would be more understandable.
+There are several ways to stop the watch mode
+'Ctrl+S' - stops the test run; \
+'Ctrl+R' - restarts the test run; \
+'Ctrl+W' - enables/disables watching files; \
+'Ctrl+C' - quits live mode and closes the browsers.
+```shell
+$ testcafe -L
+```
 
+To filter by test or meta - you need to add them
+```ts
+fixture.meta('type', 'assertions') `Assertion fixture` .page `${testCafeExampleURL}`
+test.meta('some_key', 'value')("Test Name", async t => {})
+```
+```shell
+testcafe chrome ./specs/assertions.spec.ts --test-meta type=assertions
+testcafe chrome ./specs/assertions.spec.ts --test-meta some_key=value
+testcafe chrome ./specs/assertions.spec.ts -t "Test Name 1" # by test name
+```
 
+Headless and chromium device emulation
+```shell
+testcafe chrome:headless ./specs/assertions.spec.ts -t "Test Name 1"
+testcafe "chrome:emulation:device=iphone X" ./specs/assertions.spec.ts -t "Test Name 1"
+```
+
+TestCafe has build in waiters, you can manage them a little bit. So it waits for nodes in dom, visibility, server to 
+respond via redirect, and so on.
+```ts
+const input = Selector('#developer-name1', {visibilityCheck: true, timeout: 10000});
+// or
+const inputElem = await input.with({visibilityCheck: true, timeout: 1000})
+```
+
+Debug is nice, you can easily control the test, use devtools after you "unlock" the page.
+```ts
+ await t
+  .debug()
+  .hover(checkBox)
+```
+```shell
+testcafe chrome ./specs/assertions.spec.ts --debug-mode
+```
