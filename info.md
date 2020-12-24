@@ -131,3 +131,19 @@ Debug is nice, you can easily control the test, use devtools after you "unlock" 
 ```shell
 testcafe chrome ./specs/assertions.spec.ts --debug-mode
 ```
+
+We can take screenshots (requires .Net) at any time we want, and also an element we want.
+```ts
+.takeElementScreenshot(inputElem, "path_to_screenShot", {includeMargins: true}) // will save the screenshots in date folder
+.takeScreenshot() 
+.takeScreenshot({fullPage: true, path: `./screenShots/${secondName}`}) // will save in setted folder with secondName file name 
+```
+```shell
+testcafe chrome ./specs/assertions.spec.ts -s takeOnFails=true
+```
+
+Video recording FFmpeg required `@ffmpeg-installer/ffmpeg`.
+```shell
+testcafe chrome ./specs/assertions.spec.ts --video artifacts/video --video-options failedOnly=true
+```
+
