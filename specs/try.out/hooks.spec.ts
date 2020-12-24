@@ -1,5 +1,5 @@
 import {Selector} from "testcafe";
-import {testCafeExampleURL} from "../data";
+import {testCafeExampleURL} from "../../data";
 
 fixture `First fixture` .page `${testCafeExampleURL}`
   .before(async () => {

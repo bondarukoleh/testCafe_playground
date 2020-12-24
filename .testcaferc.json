@@ -1,4 +1,4 @@
 {
   "browsers": ["chrome"],
-  "src": ["./specs/assertions.spec.ts"]
+  "src": ["./specs/*.ts"]
 }

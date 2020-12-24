@@ -1,5 +1,5 @@
 import {Selector} from "testcafe";
-import {testCafeExampleURL} from "../data";
+import {testCafeExampleURL} from "../../data";
 
 fixture.meta('type', 'assertions') `Assertion fixture` .page `${testCafeExampleURL}`
 const input = Selector('#developer-name');

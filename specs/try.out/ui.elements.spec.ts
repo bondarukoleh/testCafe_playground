@@ -1,5 +1,5 @@
 import {Selector} from "testcafe";
-import {testCafeExampleURL} from "../data";
+import {testCafeExampleURL} from "../../data";
 
 const nameInput = Selector('#developer-name');
 const osOption = Selector('#macos');
