@@ -4,7 +4,7 @@
   "description": "TestCafe playground",
   "main": "index.js",
   "scripts": {
-    "test": "testcafe chrome ./specs/*.spec.ts"
+    "test": "testcafe"
   },
   "repository": {
     "type": "git",

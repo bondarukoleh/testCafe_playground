@@ -1,4 +1,12 @@
 {
   "browsers": ["chrome"],
-  "src": ["./specs/*.ts"]
+  "src": ["./specs/*.spec.ts"],
+  "reporter": "list",
+  "screenshots": {
+    "path": "artifacts/screenshots",
+    "takeOnFails": true,
+    "pathPattern": "${DATE}_${TIME}/test-${TEST_INDEX}/${USERAGENT}/${FILE_INDEX}.png"
+  },
+  "concurrency": 1,
+  "speed": 0.1
 }
