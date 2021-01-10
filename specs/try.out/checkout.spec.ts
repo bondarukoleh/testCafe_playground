@@ -1,5 +1,5 @@
 import {Selector} from "testcafe";
-import {demoURL} from '../data';
+import {demoURL} from '../../data';
 
 fixture `Basic flows` .page `${demoURL}`
 const input = Selector('#developer-name');
