@@ -58,7 +58,7 @@ Command line settings override values from the configuration file in case they d
     }
     "appCommand": "node server.js" /* before tests */
     "appInitDelay": 3000 /* wait for application to launched with the appCommand option to initiali */
-    "concurrency": 3 /* Specifies the number of browser instances that should run tests concurrently. */
+    "concurrency": 3 /* -c in CLI, Specifies the number of browser instances that should run tests concurrently. */
     "selectorTimeout": 3000 /* implicit timeout before get the locator */
     "assertionTimeout": 1000 /* implicit timeout before fail the assertion */
     "pageLoadTimeout": 1000 /* implicit timeout */
