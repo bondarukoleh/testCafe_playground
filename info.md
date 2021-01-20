@@ -147,3 +147,8 @@ Video recording FFmpeg required `@ffmpeg-installer/ffmpeg`.
 testcafe chrome ./specs/assertions.spec.ts --video artifacts/video --video-options failedOnly=true
 ```
 
+####Little theory
+DDT - Data driven testing, big sets of data thru same actions.
+BDD - Behavior driven development. Behavior files explain the test flow. Given - initial state of app, when - action, 
+then - expected result.
+
