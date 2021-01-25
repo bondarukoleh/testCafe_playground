@@ -147,8 +147,20 @@ Video recording FFmpeg required `@ffmpeg-installer/ffmpeg`.
 testcafe chrome ./specs/assertions.spec.ts --video artifacts/video --video-options failedOnly=true
 ```
 
-####Little theory
+#### Little theory
 DDT - Data driven testing, big sets of data thru same actions.
 BDD - Behavior driven development. Behavior files explain the test flow. Given - initial state of app, when - action, 
 then - expected result.
 
+#### Docker
+To run testCafe in docker you can use testcafe image. There will be testcafe executable and firefox with chromium
+```shell
+docker pull testcafe/testcafe;
+# After we have testcafe image
+docker run -v ${TEST_FOLDER}:/tests -it testcafe/testcafe ${TESTCAFE_ARGS}  
+```
+
+You can also run on the mobile device, just scan the QR with your mobile. Not very useful for the CI. 
+```shell
+testcafe remote test.spec.ts --qr-code;
+```
