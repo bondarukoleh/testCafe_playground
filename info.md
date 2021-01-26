@@ -164,3 +164,26 @@ You can also run on the mobile device, just scan the QR with your mobile. Not ve
 ```shell
 testcafe remote test.spec.ts --qr-code;
 ```
+
+#### Report Portal
+We can run report portal locally
+```shell
+curl https://raw.githubusercontent.com/reportportal/reportportal/master/docker-compose.yml -o docker-compose.yml;
+#To start ReportPortal in daemon mode
+docker-compose -p reportportal up -d --force-recreate;
+```
+
+To use it with testCafe we need:
+```shell
+npm i testcafe-reporter-reportportal
+```
+Better add a couple env vars
+```shell
+# .env file
+REPORT_PORTAL_BASE_URL='http://localhost:8080'
+REPORT_PORTAL_TOKEN='xxx' #could be fount in report portal
+REPORT_PORTAL_PROJECT_NAME='Testing my site'
+REPORT_PORTAL_LAUNCH_NAME='Testing the UI' #optional
+REPORT_PORTAL_TAGS=UITests, SomeOtherTag #optional
+REPORT_PORTAL_DESCRIPTION='' #optional
+```
