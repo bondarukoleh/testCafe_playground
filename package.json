@@ -24,6 +24,7 @@
   "devDependencies": {},
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.0.20",
-    "testcafe": "1.9.4"
+    "testcafe": "1.9.4",
+    "testcafe-reporter-reportportal": "1.0.26"
   }
 }

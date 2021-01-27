@@ -1,7 +1,7 @@
 {
   "browsers": ["chrome:headless"],
   "src": ["./specs/*.spec.ts"],
-  "reporter": "list",
+  "reporter": "reportportal",
   "screenshots": {
     "path": "artifacts/screenshots",
     "takeOnFails": true,
