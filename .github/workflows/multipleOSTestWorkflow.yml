@@ -14,13 +14,14 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest]
-        node: [10, 12]
+        node: [12]
     steps:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Run TestCafe Tests
-        uses: DevExpress/testcafe-action@latest
-        with:
-          args: "chrome:headless tests"
+              - name: Install packages;
+        run: npm i
+      - name: Run tests
+        run: npm t
