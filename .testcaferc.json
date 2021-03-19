@@ -1,5 +1,5 @@
 {
-  "browsers": ["chrome"],
+  "browsers": ["chrome:headless"],
   "src": ["./specs/*.spec.ts"],
   "reporter": "spec",
   "screenshots": {
