@@ -1,14 +1,14 @@
 import {Selector, t} from "testcafe";
 
 interface IHeaderFragment {
-  logo?: null;
-  prising?: null;
-  transfer?: null;
-  sell?: null;
-  backorders?: null;
-  auctions?: null;
-  signIn?: null;
-  support?: null;
+  logo?: {};
+  prising?: {};
+  transfer?: {};
+  sell?: {};
+  backorders?: {};
+  auctions?: {};
+  signIn?: {};
+  support?: {};
 }
 
 class HeaderFragment {

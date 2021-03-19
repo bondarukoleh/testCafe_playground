@@ -4,7 +4,8 @@
   "description": "TestCafe playground",
   "main": "index.js",
   "scripts": {
-    "test": "testcafe"
+    "test": "./node_modules/.bin/testcafe",
+    "test:try": "node ./test.js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,9 @@
   "devDependencies": {},
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.0.20",
+    "dotenv": "8.2.0",
     "testcafe": "1.9.4",
-    "testcafe-reporter-reportportal": "1.0.26"
+    "testcafe-reporter-reportportal": "1.0.26",
+    "testcafe-reporter-reportportal-plugin": "^0.2.5"
   }
 }

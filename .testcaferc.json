@@ -1,5 +1,5 @@
 {
-  "browsers": ["chrome:headless"],
+  "browsers": ["chrome"],
   "src": ["./specs/*.spec.ts"],
   "reporter": "spec",
   "screenshots": {
@@ -8,5 +8,5 @@
     "pathPattern": "${DATE}_${TIME}/test-${TEST_INDEX}/${USERAGENT}/${FILE_INDEX}.png"
   },
   "concurrency": 1,
-  "speed": 0.1
+  "speed": 0.5
 }
