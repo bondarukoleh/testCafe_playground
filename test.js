@@ -1,5 +1,6 @@
 const createTestCafe = require('testcafe');
-require('./prepareReporter')
+// require('./prepareReporter')
+const customReporter = require('./lib/helpers/custom.reporter')
 
 let testCafeInstance = null;
 
@@ -12,7 +13,7 @@ createTestCafe('localhost', 1337, 1338)
     return runner
       .src('./specs/*.spec.ts')
       .browsers(['chrome'])
-      .reporter('reportportal-plugin')
+      .reporter(customReporter)
       .run();
   })
   .catch(err => {

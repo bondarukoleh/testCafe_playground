@@ -25,6 +25,7 @@
   "devDependencies": {},
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.0.20",
+    "@reportportal/client-javascript": "^5.0.3",
     "dotenv": "8.2.0",
     "testcafe": "1.9.4",
     "testcafe-reporter-reportportal": "1.0.26",

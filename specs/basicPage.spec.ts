@@ -11,3 +11,8 @@ test("Click something TEST", async t => {
   const d = await homePage.getSomething();
   await assertion(`Check something`, async () => t.expect(true).eql(true))
 })
+
+test("Some Other test", async t => {
+  const d = await homePage.getSomething();
+  await assertion(`Check something else`, async () => t.expect(true).eql(true))
+})
