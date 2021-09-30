@@ -1,6 +1,7 @@
 import {demoURL} from '../data';
 import {pages} from "../lib/page.objects/pages";
-import {assertion, setBrowserName} from "../lib/helpers/reportDecorators";
+import {assertion} from "../lib/helpers/reportDecorators";
+import {test} from "../lib/helpers/testDecorator";
 
 const {ReportingApi} = require('testcafe-reporter-agent-js-testcafe/build/reportingApi');
 
@@ -14,8 +15,6 @@ fixture.meta({
   }, {value: 'Just suite meta value'}],
 })`Basic page Suite`.page`${demoURL}`.meta({'testMetaInfo': true})
 
-.beforeEach(async (t) => setBrowserName(t))
-
 test("Click something TEST", async t => {
   ReportingApi.setTestCaseId('AddedTestID_TO_TEST');
   ReportingApi.log('INFO', 'Added extra info to test attachment');
@@ -26,7 +25,7 @@ test("Click something TEST", async t => {
   await assertion(`Check something`, async () => t.expect(d.someData).eql('data'))
 })
 
-test.only("Some Other test", async t => {
+test("Some Other test", async t => {
   const d = await homePage.getSomethingElse();
 })
 

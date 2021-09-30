@@ -13,7 +13,7 @@ createTestCafe('localhost', 1337, 1338)
 
     return runner
       .src(['specs/*.spec.ts'])
-      .browsers(['chrome'])
+      .browsers(['chrome', 'firefox'])
       // .reporter(customReporter)
       // .reporter('reportportal')
       // .reporter(createReporter(rpConfig))

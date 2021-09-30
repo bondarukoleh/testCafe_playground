@@ -1,4 +1,5 @@
 const {ReportingApi} = require('testcafe-reporter-agent-js-testcafe/build/reportingApi');
+import {t} from 'testcafe'
 import {getScreenshotObject} from './screenShots'
 
 function step(name: string) {
@@ -6,7 +7,7 @@ function step(name: string) {
     const originalFunction = propertyDescriptor.value;
 
     propertyDescriptor.value = async function (...args) {
-      ReportingApi.info(`"${name}" step.`);
+      ReportingApi.info(`"${name}" step. Browser: ${t.browser.name}`);
 
       args.forEach((arg) => {
         try {
@@ -18,7 +19,7 @@ function step(name: string) {
         const result = await originalFunction.apply(this, args)
         return result;
       } catch (e) {
-        ReportingApi.error(`Error. "${name}" step - failed`, await getScreenshotObject());
+        ReportingApi.error(`Error. "${name}" step - failed. Browser: ${t.browser.name}`, await getScreenshotObject());
         ReportingApi.setStatusInterrupted();
         throw e;
       }
@@ -31,19 +32,11 @@ async function assertion(name: string, fn: () => any) {
   try {
     await fn()
   } catch (e) {
-    ReportingApi.error(`Assertion error. Assertion: "${name}" - failed`, await getScreenshotObject());
+    ReportingApi.error(`Assertion error. Assertion: "${name}" - failed. Browser: ${t.browser.name}`,
+      await getScreenshotObject());
     ReportingApi.setStatusFailed()
     throw e
   }
-}
-
-export function setBrowserName(t: TestController){
-  ReportingApi.addAttributes([
-    {
-      key: `Browser:`,
-      value: t.browser.alias,
-    }
-  ]);
 }
 
 export {step, assertion}

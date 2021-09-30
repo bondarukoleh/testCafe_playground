@@ -26,14 +26,12 @@ export async function getScreenshotObject(): Promise<{name: string, type: string
   const screenshotName = makeHash()
   const screenshotPath = `${name}_${os.name}_${platform}/${date}/${screenshotName}.png`
 
-  console.log(screenshotPath);
   await t.takeScreenshot(screenshotPath);
 
   let fileContent = Buffer.from(`Couldn't read the screenshot`).toString('base64')
   try {
     fileContent = fs.readFileSync(path.join(process.cwd(), 'artifacts/screenshots', screenshotPath)).toString
     ('base64')
-    console.log(path.join(process.cwd(), 'artifacts/screenshots', screenshotPath));
   } catch (e) {
     ReportingApi.warn(`Couldn't read the screenshot path.`)
   }

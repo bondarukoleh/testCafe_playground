@@ -1,4 +1,3 @@
-/* TODO: Not working properly, report portal isn't closing run */
 type TestType = (testName: string, fn: (t: TestController) => Promise<any>) => any;
 const {ReportingApi} = require('testcafe-reporter-agent-js-testcafe/build/reportingApi');
 
