@@ -62,9 +62,9 @@ test.skip('Drag and drop', async t => {
     .drag(elementDragged, 400, 0, {offsetX: 10, offsetY: 10} )
 })
 
-test.only('Hover', async t => {
+test('Hover', async t => {
   const checkBox = Selector('label').withText("I have tried TestCafe");
   await t
-    .debug()
+    // .debug()
     .hover(checkBox)
 })

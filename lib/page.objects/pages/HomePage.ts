@@ -17,7 +17,13 @@ class HomePage {
 
   @step('Get something from the page step')
   public async getSomething() {
+    return {someData: 'data'}
     // throw Error('error from TEST getSomething method')
+  }
+
+  @step('Get something that can fail')
+  public async getSomethingElse() {
+    throw Error('error from TEST getSomethingElse method')
   }
 }
 

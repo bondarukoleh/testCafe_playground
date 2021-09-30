@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const {
   REPORT_PORTAL_DOMAIN,
   REPORT_PORTAL_TOKEN,

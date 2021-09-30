@@ -1,20 +1,25 @@
+const {ReportingApi} = require('testcafe-reporter-agent-js-testcafe/build/reportingApi');
+import {getScreenshotObject} from './screenShots'
+
 function step(name: string) {
   return function (parentClass: object, propertyName: string, propertyDescriptor: PropertyDescriptor) {
     const originalFunction = propertyDescriptor.value;
 
-    propertyDescriptor.value = async function(...args) {
-      console.log(`"${name}" step.`);
+    propertyDescriptor.value = async function (...args) {
+      ReportingApi.info(`"${name}" step.`);
+
       args.forEach((arg) => {
-          try {
-            JSON.stringify(arg);
-            console.log(`Argument for "${name}" step ${JSON.stringify(arg)}`);
-          } catch (e) {}
-        })
+        try {
+          ReportingApi.info(`Argument for "${name}" step ${JSON.stringify(arg)}`);
+        } catch (e) {
+        }
+      })
       try {
         const result = await originalFunction.apply(this, args)
         return result;
       } catch (e) {
-        console.error(`"${name}" step failed`);
+        ReportingApi.error(`Error. "${name}" step - failed`, await getScreenshotObject());
+        ReportingApi.setStatusInterrupted();
         throw e;
       }
     }
@@ -25,11 +30,20 @@ function step(name: string) {
 async function assertion(name: string, fn: () => any) {
   try {
     await fn()
-    console.log(`Assertion: ${name} - passed`);
   } catch (e) {
-    console.log(`Assertion: ${name} - failed`);
+    ReportingApi.error(`Assertion error. Assertion: "${name}" - failed`, await getScreenshotObject());
+    ReportingApi.setStatusFailed()
     throw e
   }
+}
+
+export function setBrowserName(t: TestController){
+  ReportingApi.addAttributes([
+    {
+      key: `Browser:`,
+      value: t.browser.alias,
+    }
+  ]);
 }
 
 export {step, assertion}
