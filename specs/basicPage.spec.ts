@@ -19,7 +19,6 @@ test("Click something TEST", async t => {
   ReportingApi.setTestCaseId('AddedTestID_TO_TEST');
   ReportingApi.log('INFO', 'Added extra info to test attachment');
 
-  // await t.debug()
   await homePage.clickOn({header: {signIn: {}}})
   const d = await homePage.getSomething();
   await assertion(`Check something`, async () => t.expect(d.someData).eql('data'))
