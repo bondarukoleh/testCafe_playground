@@ -29,6 +29,6 @@
     "testcafe": "1.9.4",
     "testcafe-reporter-reportportal": "1.0.26",
     "testcafe-reporter-reportportal-plugin": "^0.2.5",
-    "testcafe-reporter-agent-js-testcafe": "npm:@reportportal/testcafe-reporter-agent-js-testcafe@^5.0.0"
+    "testcafe-reporter-agent-js-testcafe": "npm:@reportportal/testcafe-reporter-agent-js-testcafe@5.0.0"
   }
 }
